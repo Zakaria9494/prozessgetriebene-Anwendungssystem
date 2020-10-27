@@ -1,0 +1,29 @@
+<xs:schema xmlns:tns="http://zwo/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://zwo/" version="1.0">
+
+  <xs:element name="getDatum" type="tns:getDatum"/>
+
+  <xs:element name="getDatumResponse" type="tns:getDatumResponse"/>
+
+  <xs:complexType name="getDatum">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDatumResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:taxifahrt"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="taxifahrt">
+    <xs:sequence>
+      <xs:element name="datum" type="xs:int"/>
+      <xs:element name="entfernung" type="xs:int"/>
+      <xs:element name="knr" type="xs:int"/>
+      <xs:element minOccurs="0" name="nach" type="xs:string"/>
+      <xs:element minOccurs="0" name="von" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

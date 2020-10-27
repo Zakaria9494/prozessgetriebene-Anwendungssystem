@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="TaxidatenImplService" targetNamespace="http://zwo/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://zwo/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://zwo/" schemaLocation="taxidatenimpl_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getDatumResponse">
+    <wsdl:part name="parameters" element="tns:getDatumResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDatum">
+    <wsdl:part name="parameters" element="tns:getDatum">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Taxidaten">
+    <wsdl:operation name="getDatum">
+      <wsdl:input name="getDatum" message="tns:getDatum">
+    </wsdl:input>
+      <wsdl:output name="getDatumResponse" message="tns:getDatumResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TaxidatenImplServiceSoapBinding" type="tns:Taxidaten">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDatum">
+      <soap:operation soapAction="urn:GetDatum" style="document"/>
+      <wsdl:input name="getDatum">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDatumResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaxidatenImplService">
+    <wsdl:port name="TaxidatenImplPort" binding="tns:TaxidatenImplServiceSoapBinding">
+      <soap:address location="http://localhost:8192/MeilensteinZwei_New/services/TaxidatenImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

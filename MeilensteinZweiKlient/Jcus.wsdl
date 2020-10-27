@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="http://sap.com/persistence/j/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://sap.com/persistence/j/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sap.com/persistence/j/" version="1.0">
+<xs:element name="create" type="tns:create"/>
+<xs:element name="createResponse" type="tns:createResponse"/>
+<xs:element name="delete" type="tns:delete"/>
+<xs:element name="deleteResponse" type="tns:deleteResponse"/>
+<xs:element name="findAllCUSTOMER" type="tns:findAllCUSTOMER"/>
+<xs:element name="findAllCUSTOMERResponse" type="tns:findAllCUSTOMERResponse"/>
+<xs:element name="findCUSTOMERByCusId" type="tns:findCUSTOMERByCusId"/>
+<xs:element name="findCUSTOMERByCusIdResponse" type="tns:findCUSTOMERByCusIdResponse"/>
+<xs:element name="getCUSTOMERItemCount" type="tns:getCUSTOMERItemCount"/>
+<xs:element name="getCUSTOMERItemCountResponse" type="tns:getCUSTOMERItemCountResponse"/>
+<xs:element name="update" type="tns:update"/>
+<xs:element name="updateResponse" type="tns:updateResponse"/>
+<xs:complexType name="create">
+<xs:sequence>
+<xs:element minOccurs="0" name="entity" type="tns:customer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="customer">
+<xs:sequence>
+<xs:element minOccurs="0" name="address" type="xs:string"/>
+<xs:element minOccurs="0" name="country" type="xs:string"/>
+<xs:element minOccurs="0" name="cusId" type="xs:int"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="createResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="update">
+<xs:sequence>
+<xs:element minOccurs="0" name="entity" type="tns:customer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="delete">
+<xs:sequence>
+<xs:element minOccurs="0" name="entity" type="tns:customer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="deleteResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="findAllCUSTOMER">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="findAllCUSTOMERResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:customer"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getCUSTOMERItemCount">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getCUSTOMERItemCountResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="findCUSTOMERByCusId">
+<xs:sequence>
+<xs:element minOccurs="0" name="cusId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="findCUSTOMERByCusIdResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:customer"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="createIn">
+<wsdl:part element="tns:create" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="createOut">
+<wsdl:part element="tns:createResponse" name="createResponse"/>
+</wsdl:message>
+<wsdl:message name="updateIn">
+<wsdl:part element="tns:update" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="updateOut">
+<wsdl:part element="tns:updateResponse" name="updateResponse"/>
+</wsdl:message>
+<wsdl:message name="deleteIn">
+<wsdl:part element="tns:delete" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="deleteOut">
+<wsdl:part element="tns:deleteResponse" name="deleteResponse"/>
+</wsdl:message>
+<wsdl:message name="findAllCUSTOMERIn">
+<wsdl:part element="tns:findAllCUSTOMER" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="findAllCUSTOMEROut">
+<wsdl:part element="tns:findAllCUSTOMERResponse" name="findAllCUSTOMERResponse"/>
+</wsdl:message>
+<wsdl:message name="getCUSTOMERItemCountIn">
+<wsdl:part element="tns:getCUSTOMERItemCount" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="getCUSTOMERItemCountOut">
+<wsdl:part element="tns:getCUSTOMERItemCountResponse" name="getCUSTOMERItemCountResponse"/>
+</wsdl:message>
+<wsdl:message name="findCUSTOMERByCusIdIn">
+<wsdl:part element="tns:findCUSTOMERByCusId" name="parameters"/>
+</wsdl:message>
+<wsdl:message name="findCUSTOMERByCusIdOut">
+<wsdl:part element="tns:findCUSTOMERByCusIdResponse" name="findCUSTOMERByCusIdResponse"/>
+</wsdl:message>
+<wsdl:portType name="Jcus">
+<wsdl:operation name="create" parameterOrder="parameters">
+<wsdl:input message="tns:createIn"/>
+<wsdl:output message="tns:createOut"/>
+</wsdl:operation>
+<wsdl:operation name="update" parameterOrder="parameters">
+<wsdl:input message="tns:updateIn"/>
+<wsdl:output message="tns:updateOut"/>
+</wsdl:operation>
+<wsdl:operation name="delete" parameterOrder="parameters">
+<wsdl:input message="tns:deleteIn"/>
+<wsdl:output message="tns:deleteOut"/>
+</wsdl:operation>
+<wsdl:operation name="findAllCUSTOMER" parameterOrder="parameters">
+<wsdl:input message="tns:findAllCUSTOMERIn"/>
+<wsdl:output message="tns:findAllCUSTOMEROut"/>
+</wsdl:operation>
+<wsdl:operation name="getCUSTOMERItemCount" parameterOrder="parameters">
+<wsdl:input message="tns:getCUSTOMERItemCountIn"/>
+<wsdl:output message="tns:getCUSTOMERItemCountOut"/>
+</wsdl:operation>
+<wsdl:operation name="findCUSTOMERByCusId" parameterOrder="parameters">
+<wsdl:input message="tns:findCUSTOMERByCusIdIn"/>
+<wsdl:output message="tns:findCUSTOMERByCusIdOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="JcusBinding" type="tns:Jcus">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="create">
+<soap:operation soapAction=""/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="update">
+<soap:operation soapAction=""/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="delete">
+<soap:operation soapAction=""/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="findAllCUSTOMER">
+<soap:operation soapAction=""/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getCUSTOMERItemCount">
+<soap:operation soapAction=""/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="findCUSTOMERByCusId">
+<soap:operation soapAction=""/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="Jc">
+<wsdl:port binding="tns:JcusBinding" name="JcusPort">
+<soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" location="http://i83lp1.informatik.tu-muenchen.de:50000/Jc/Jcus"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
